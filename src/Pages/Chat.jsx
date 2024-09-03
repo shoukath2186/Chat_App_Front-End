@@ -1,6 +1,6 @@
 import { Box } from '@chakra-ui/react'
 import { ChatState } from '../ContextApi/context'
-import React from 'react'
+import React, { useState } from 'react'
 import SideDrawer from '../Components/Micelleneous/SideDrawer'
 import ChatBox from '../Components/ChatBox'
 import MyChat from '../Components/MyChat'
@@ -8,8 +8,8 @@ import MyChat from '../Components/MyChat'
 function ChatPage() {
 
   const { user } = ChatState()
-
-
+  const [fetching,setFetching]=useState(false)
+  
   return (
     <div style={{ width: '100%' }}>
       {user && <SideDrawer />}
@@ -20,8 +20,10 @@ function ChatPage() {
       height="91.5vh" 
       padding="10px" 
       >
-        {user && <MyChat />}
-        {user && <ChatBox />}
+        {user && (
+          <MyChat fetching={fetching}/>
+          )}
+        {user && <ChatBox  fetching={fetching} setFetching={setFetching}/>}
       </Box>
     </div>
   )

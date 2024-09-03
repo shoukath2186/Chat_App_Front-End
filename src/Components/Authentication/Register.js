@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useToast } from '@chakra-ui/react'
 import axios from 'axios'
 import {useHistory} from 'react-router-dom'
+import { ChatState } from '../../ContextApi/context'
 
 function Register() {
   const [show, setShow] = useState(false);
@@ -14,7 +15,7 @@ function Register() {
   const [loading, setLoading] = useState(false);
   const history=useHistory()
 
-
+  const {setUser}= ChatState()
   const toast = useToast()
 
   function handleClick() {
@@ -63,7 +64,7 @@ function Register() {
       })
       setLoading(false)
       localStorage.setItem('userInfo',JSON.stringify(data))
-     
+      setUser(data)
        history.push('/chats')
     } catch (error) {
       console.log(1212,error.response.data.message);

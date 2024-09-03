@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import {useHistory} from 'react-router-dom';
 import { useToast } from '@chakra-ui/react'
 import axios from 'axios';
+import { ChatState } from '../../ContextApi/context'
+
 
 function LogIn() {
   const [show, setShow] = useState(false);
@@ -11,6 +13,9 @@ function LogIn() {
   const [loading,setLoading]=useState(false);
 
   const history=useHistory()
+
+  const {setUser}= ChatState()
+
 
   const toast = useToast()
 
@@ -55,6 +60,8 @@ function LogIn() {
       
       setLoading(false)
       localStorage.setItem('userInfo',JSON.stringify(data))
+      setUser(data)
+
       history.push('/chats')
     } catch (error) {
 

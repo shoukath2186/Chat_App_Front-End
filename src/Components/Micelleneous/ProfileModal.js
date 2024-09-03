@@ -14,8 +14,7 @@ function ProfileModal({ user, children }) {
             ) : (
                 <IconButton d={{ base: 'flex' }} icon={<ViewIcon />} onClick={onOpen} />
             )}
-            {/* <Button onClick={onOpen}>Open Modal</Button> */}
-
+         
             <Modal isOpen={isOpen} onClose={onClose} isCentered>
                 <ModalOverlay />
                 <ModalContent>
@@ -32,8 +31,8 @@ function ProfileModal({ user, children }) {
                         alignItems="center"
                         justifyContent="center"
                         fontSize="40px"
-                        textAlign="center"  // Center text within the container
-                        height="100%"       // Ensures the modal body takes full height to center content
+                        textAlign="center"  
+                        height="100%"       
                     >
                         <Image
                             borderRadius="full"
